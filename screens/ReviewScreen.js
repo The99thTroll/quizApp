@@ -13,6 +13,8 @@ export default class ReviewScreen extends React.Component{
             correctProblems: this.props.navigation.getParam('correctProblems'),
             problemData: this.props.navigation.getParam('problemData')
         }
+
+        console.log(this.state.problemData);
     }
 
     keyExtractor = (item, index) => index.toString()
@@ -36,8 +38,28 @@ export default class ReviewScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <Header centerComponent={{text: "Quiz App",
+                <Header leftComponent={
+                <TouchableOpacity style={{alignSelf: "center"}}
+                onPress={
+                    ()=>{this.props.navigation.navigate("homeScreen")}
+                }>
+                    <Text style={{fontSize: 24, color: "white", 
+                    fontWeight: "bold", justifyContent: "center"}}>
+                        Menu
+                    </Text>
+                </TouchableOpacity>}
+                centerComponent={{text: "Quiz App",
                 style:{fontSize: 32, color: "white", fontWeight: "bold"}}}
+                rightComponent={
+                    <TouchableOpacity style={{alignSelf: "center"}}
+                    onPress={
+                        ()=>{this.props.navigation.navigate("loadingScreen", {type: this.state.quizType, 
+                            destination: "quizScreen", questions: this.state.totalProblems})}}>
+                        <Text style={{fontSize: 24, color: "white", 
+                        fontWeight: "bold", justifyContent: "center"}}>
+                            Retry
+                        </Text>
+                    </TouchableOpacity>}
                 backgroundColor={COLORS.headerColor}/>
 
                 <Text style={[styles.title,{marginTop: "5%"}]}>Your Quiz: {this.state.quizType}</Text>
@@ -45,17 +67,6 @@ export default class ReviewScreen extends React.Component{
                 <Text style={styles.titleAlt}>
                     You Got: {this.state.correctProblems}/{this.state.totalProblems}
                 </Text>
-
-                <TouchableOpacity style={styles.return}
-                onPress={
-                    ()=>{
-                        this.props.navigation.navigate("homeScreen");
-                    }
-                }>
-                    <Text style={[styles.returnText,{color: "white"}]}>
-                        Return To Menu
-                    </Text>
-                </TouchableOpacity>
 
                 <View style={{flex: 1}}>
                     {this.state.problemData.length===0

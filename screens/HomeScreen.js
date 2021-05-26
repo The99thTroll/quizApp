@@ -1,9 +1,86 @@
 import React, {Component} from "react";
-import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
+import {View, Text, TouchableOpacity, StyleSheet, 
+    Image, FlatList} from "react-native";
 import {Header} from "react-native-elements";
 import {COLORS} from "../assets/palette";
+import {QUIZZES} from "../assets/quizData";
 
 export default class HomeScreen extends React.Component{
+
+    lengthIndicator(data){
+        if(data === "Short"){
+            return(<View style={{backgroundColor: "#2eff17", borderRadius: 10,
+            padding: 5, alignSelf: "center", marginTop: "2%"}}>
+                <Text style={{color: "#0f9900", fontWeight: "bold"}}>
+                {data}
+                </Text>
+            </View>)
+        }else if(data === "Medium"){
+            return(<View style={{backgroundColor: "#e8e810",borderRadius: 10,
+            padding: 5, alignSelf: "center", marginTop: "2%"}}>
+                <Text style={{color: "#9c9c00", fontWeight: "bold"}}>
+                {data}
+                </Text>
+            </View>)
+        }else if(data === "Lengthy"){
+            return(<View style={{backgroundColor: "#ed1127",borderRadius: 10,
+            padding: 5, alignSelf: "center", marginTop: "2%"}}>
+                <Text style={{color: "#8a000d", fontWeight: "bold"}}>
+                {data}
+                </Text>
+            </View>)
+        }else{
+            return(<View style={{backgroundColor: "#a50dff",borderRadius: 10,
+            padding: 5, alignSelf: "center", marginTop: "2%"}}>
+                <Text style={{color: "#57008a", fontWeight: "bold"}}>
+                {data}
+                </Text>
+            </View>)
+        }
+    }
+    
+    keyExtractor = (item, index) => index.toString()
+
+    renderItem = ( {item, i} ) => { 
+        return(
+            <View style={styles.allQuizzes}>
+
+            <View style={styles.quiz}>
+                <View style={styles.subrow}>
+                    <View style={{width: "20%"}}>
+                        <Image source={item.badge}
+                        style={styles.badge}/>
+                    </View>
+
+                    <View style={[styles.otherAltSubrow,{width: "60%"}]}>
+                        <Text style={styles.quizTitle}>
+                            {item.title}
+                        </Text>
+
+                        {this.lengthIndicator(item.length)}
+                    </View>
+                </View>
+
+                <View style={styles.altSubrow}>
+                    <Text style={styles.quizDescription}>
+                        {item.description}
+                    </Text>
+
+                    <TouchableOpacity style={styles.start}
+                    onPress={
+                        ()=>{
+                            this.props.navigation.navigate("loadingScreen", {type: item.title, 
+                                                                        destination: "quizScreen",
+                                                                        questions: item.questions});
+                        }
+                    }>
+                        <Text style={styles.startText}>Begin</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View>)
+    }
+
     render(){
         return(
             <View style={styles.container}>
@@ -13,48 +90,9 @@ export default class HomeScreen extends React.Component{
 
                 <Text style={styles.title}>Available Quizzes</Text>
 
-                <View style={styles.allQuizzes}>
-
-                    <View style={styles.quiz}>
-                        <Text style={styles.quizTitle}>
-                            Math - Easy
-                        </Text>
-
-                        <Text style={styles.quizDescription}>
-                            Test your reaction time in a short burst of
-                            simple math problems.
-                        </Text>
-
-                        <TouchableOpacity style={styles.start}
-                        onPress={
-                            ()=>{
-                                this.props.navigation.navigate("quizScreen", {type: "Math - Easy"});
-                            }
-                        }>
-                            <Text style={styles.startText}>Begin</Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.quiz}>
-                        <Text style={styles.quizTitle}>
-                            Math - Hard
-                        </Text>
-
-                        <Text style={styles.quizDescription}>
-                            A great challenge with some rather
-                            tedious problems ready for anyone.
-                        </Text>
-
-                        <TouchableOpacity style={styles.start}
-                        onPress={
-                            ()=>{
-                                this.props.navigation.navigate("quizScreen", {type: "Math - Hard"});
-                            }
-                        }>
-                            <Text style={styles.startText}>Begin</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                <FlatList keyExtractor={this.keyExtractor}
+                    data={QUIZZES}
+                    renderItem={this.renderItem}/>
             </View>
         )
     }
@@ -84,7 +122,6 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         alignSelf: "center",
-        marginTop: "-5%"
     },
 
     quizDescription:{
@@ -94,20 +131,26 @@ const styles = StyleSheet.create({
         marginTop: "2.5%",
         fontSize: 18,
         fontStyle: "italic",
-        textAlign: "justify"
+        textAlign: "justify",
+        width: "50%"
     },
 
     quiz:{
-        width: "42%",
-        height: "25%",
-
         padding: "3%",
+        paddingTop: "5%",
+        paddingBottom: "5%",
         margin: "2.5%",
 
         backgroundColor: COLORS.alternateBackgroundColor,
         borderRadius: 25,
 
         flex: 1,
+        justifyContent: "center",
+        alignSelf: 'flex-start',
+
+        shadowColor: "black",
+        shadowOpacity: 100,
+        shadowOffset: {width: 4, height: 4}
     },
 
     start:{
@@ -125,5 +168,25 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 24,
         fontWeight: "500"
+    },
+
+    subrow: {
+        flexDirection: "row",
+        justifyContent: "space-evenly"
+    },
+
+    altSubrow: {
+        flexDirection: "row",
+        justifyContent: "space-around"
+    },
+
+    otherAltSubrow: {
+        flexDirection: "column",
+        justifyContent: "center"
+    },
+
+    badge:{
+        width: 90, 
+        height: 90,
     }
 })

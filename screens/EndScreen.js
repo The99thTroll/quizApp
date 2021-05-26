@@ -20,6 +20,17 @@ export default class EndScreen extends React.Component{
             <View style={styles.container}>
                 <Header centerComponent={{text: "Quiz App",
                 style:{fontSize: 32, color: "white", fontWeight: "bold"}}}
+                rightComponent={
+                    <TouchableOpacity style={{alignSelf: "center"}}
+                    onPress={
+                        ()=>{this.props.navigation.navigate("loadingScreen", {type: this.state.quizType, 
+                            destination: "quizScreen", questions: this.state.totalProblems})}
+                    }>
+                        <Text style={{fontSize: 24, color: "white", 
+                        fontWeight: "bold", justifyContent: "center"}}>
+                            Retry
+                        </Text>
+                    </TouchableOpacity>}
                 backgroundColor={COLORS.headerColor}/>
 
                 <Text style={[styles.title,{marginTop: "35%"}]}>Your Quiz:</Text>

@@ -11,5 +11,10 @@ export const COLORS = {
     secondaryColor: "#5C94B0",
     backgroundColor: "#ADCCE1",
     alternateBackgroundColor: "#03366B",
-    alternateButtonColor: "#11cfcf"
+    alternateButtonColor: "#11cfcf",
+
+    primaryTestingColor: "#8f0bde",
+    secondaryTestingColor: "#be5afa",
+    backgroundTestingColor: "#e7bfff",
+    alternateBackgroundTestingColor: "#57008a"
 }

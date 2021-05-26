@@ -4,6 +4,7 @@ import HomeScreen from "./screens/HomeScreen";
 import QuizScreen from "./screens/QuizScreen";
 import EndScreen from "./screens/EndScreen"
 import ReviewScreen from "./screens/ReviewScreen";
+import LoadingScreen from "./screens/LoadingScreen";
 
 export default class App extends React.Component{
   render(){
@@ -17,7 +18,8 @@ const switchNavigator = createSwitchNavigator({
   homeScreen: {screen: HomeScreen},
   quizScreen: {screen: QuizScreen},
   endScreen: {screen: EndScreen},
-  reviewScreen: {screen: ReviewScreen}
+  reviewScreen: {screen: ReviewScreen},
+  loadingScreen: {screen: LoadingScreen}
 })
 
 const AppContainer = createAppContainer(switchNavigator);

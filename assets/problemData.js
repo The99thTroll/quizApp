@@ -1,5 +1,5 @@
 export const PROBLEMS = {
-    easyMath: {
+    basicOperations: {
         question1: {
             question: "What's 7 + 7?",
             choice1: "8",
@@ -25,79 +25,139 @@ export const PROBLEMS = {
             correctAns: "6"
         }, 
         question4: {
-            question: "What's 5 x 5?",
-            choice1: "15",
-            choice2: "45",
+            question: "What's 25 + 5?",
+            choice1: "30",
+            choice2: "40",
             choice3: "25",
             choice4: "35",
-            correctAns: "25"
+            correctAns: "30"
         }, 
         question5: {
-            question: "What's 30 ÷ 3?",
+            question: "What's 17 - 3?",
             choice1: "12",
             choice2: "8",
-            choice3: "10",
+            choice3: "14",
             choice4: "9",
-            correctAns: "10"
+            correctAns: "14"
         }, 
         question6: {
-            question: "What's 7 + 9 - 4?",
+            question: "What's 1 + 7 - 4?",
+            choice1: "5",
+            choice2: "4",
+            choice3: "6",
+            choice4: "9",
+            correctAns: "4"
+        }, 
+        question7: {
+            question: "What's 13 - 10 + 20?",
+            choice1: "23",
+            choice2: "18",
+            choice3: "25",
+            choice4: "22",
+            correctAns: "23"
+        }, 
+        question8: {
+            question: "Ron has 17 apples. He eats 5. How many are left?",
             choice1: "10",
             choice2: "12",
             choice3: "11",
             choice4: "9",
             correctAns: "12"
         }, 
-        question7: {
-            question: "What's 9 + 4 x 2?",
-            choice1: "18",
-            choice2: "26",
-            choice3: "17",
-            choice4: "21",
-            correctAns: "17"
+        question9: {
+            question: "There are 8 slices of pizza. Bob eats 2 slices, Amy eats 5. How many are left?",
+            choice1: "3",
+            choice2: "1",
+            choice3: "2",
+            choice4: "0",
+            correctAns: "1"
+        }, 
+        question10: {
+            question: "2 bushes are in a field. 9 grow the next day but 1 dies. How many are left?",
+            choice1: "8",
+            choice2: "10",
+            choice3: "12",
+            choice4: "13",
+            correctAns: "10"
         }, 
     },
 
-    hardMath: {
+    moreOperations: {
         question1: {
-            question: "What's 27 x 4?",
-            choice1: "104",
-            choice2: "108",
-            choice3: "96",
-            choice4: "112",
-            correctAns: "108"
+            question: "What is 7 x 5?",
+            choice1: "20",
+            choice2: "35",
+            choice3: "45",
+            choice4: "50",
+            correctAns: "35"
         }, 
         question2: {
-            question: "What's 256 ÷ 16?",
-            choice1: "14",
-            choice2: "16",
-            choice3: "15",
-            choice4: "12",
-            correctAns: "16"
+            question: "What is 8 x 12?",
+            choice1: "96",
+            choice2: "64",
+            choice3: "86",
+            choice4: "94",
+            correctAns: "96"
         }, 
         question3: {
-            question: "What's √49 x 12?",
-            choice1: "94",
-            choice2: "76",
-            choice3: "84",
-            choice4: "62",
-            correctAns: "84"
+            question: "What is 100 ÷ 25?",
+            choice1: "6",
+            choice2: "4",
+            choice3: "2",
+            choice4: "5",
+            correctAns: "4"
         }, 
-        question4: {
-            question: "What's √(100 ÷ 4)?",
-            choice1: "25",
+        question3: {
+            question: "What is 10 ÷ 2?",
+            choice1: "2",
             choice2: "5",
-            choice3: "10",
+            choice3: "1",
             choice4: "4",
             correctAns: "5"
         }, 
-        question5: {
-            question: "What's 8 x 3 x 6?",
-            choice1: "166",
-            choice2: "122",
-            choice3: "144",
-            choice4: "188",
-            correctAns: "144"
+        question4: {
+            question: "What is 10 ÷ 2?",
+            choice1: "2",
+            choice2: "5",
+            choice3: "1",
+            choice4: "4",
+            correctAns: "5"
         }, 
     },
+    advancedOperations: {
+        question1: {
+            question: "What is 7 x 5?",
+            choice1: "20",
+            choice2: "35",
+            choice3: "45",
+            choice4: "50",
+            correctAns: "35"
+        }, 
+        question2: {
+            question: "What is 8 x 12?",
+            choice1: "96",
+            choice2: "64",
+            choice3: "86",
+            choice4: "94",
+            correctAns: "96"
+        }, 
+    },
+    review1: {
+        question1: {
+            question: "What is 7 x 5?",
+            choice1: "20",
+            choice2: "35",
+            choice3: "45",
+            choice4: "50",
+            correctAns: "35"
+        }, 
+        question2: {
+            question: "What is 8 x 12?",
+            choice1: "96",
+            choice2: "64",
+            choice3: "86",
+            choice4: "94",
+            correctAns: "96"
+        }, 
+    }
 }
