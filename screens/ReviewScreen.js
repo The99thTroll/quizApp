@@ -26,6 +26,12 @@ export default class ReviewScreen extends React.Component{
                 <Text style={styles.flatListSubtext}>You Picked: {item.selectedAnswer}</Text>
                 <Text style={styles.flatListSubtext}>Correct Answer: {item.correctAnswer}</Text>
             </View>)
+        }else if(item.selectedAnswer === "Skipped"){
+            return(<View style={[styles.flatListView,{backgroundColor: "#e8d4b0"}]}>
+                <Text style={styles.flatListTitle}>Question: {item.question}</Text>
+                <Text style={[styles.flatListSubtext,{fontStyle: "italic"}]}>Problem Skipped</Text>
+                <Text style={styles.flatListSubtext}>Correct Answer: {item.correctAnswer}</Text>
+            </View>)
         }else{
             return(<View style={[styles.flatListView,{backgroundColor: "#e0adb1"}]}>
                 <Text style={styles.flatListTitle}>Question: {item.question}</Text>

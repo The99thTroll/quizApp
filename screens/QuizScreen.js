@@ -104,8 +104,10 @@ export default class HomeScreen extends React.Component{
     otherViewRef = ref => {this.view2 = ref};
     bounceInDown = () => {this.view.bounceInDown(1250)}
     bounceOutUp = () => {this.view.bounceOutUp(750)}
+    bounceOutLeft = () => {this.view.bounceOutLeft(750)}
     bounceIn = () => {this.view2.bounceIn(1250)}
     bounceOut = () => {this.view2.bounceOut(700)}
+    bounceOutRight = () => {this.view2.bounceOutRight(700)}
 
     componentDidMount(){
         this.updateQuestions(this.state.questionNumber);
@@ -127,6 +129,31 @@ export default class HomeScreen extends React.Component{
                 </TouchableOpacity>}
                 centerComponent={{text: "Quiz App",
                 style:{fontSize: 32, color: "white", fontWeight: "bold"}}}
+
+                rightComponent={
+                    <TouchableOpacity style={{alignSelf: "center"}}
+                    onPress={
+                        ()=>{
+                            this.setState({
+                                selectedAns: "Skipped"
+                            })
+                            try{
+                                this.bounceOutLeft();
+                                this.bounceOutRight();
+                                setTimeout(() => {
+                                    this.bounceInDown()
+                                    this.bounceIn()
+                                    this.nextProblem();
+                                }, 750)
+                            }catch{
+                                this.nextProblem();
+                            }
+                        }}>
+                        <Text style={{fontSize: 24, color: "yellow", 
+                        fontWeight: "bold", justifyContent: "center"}}>
+                            Skip
+                        </Text>
+                    </TouchableOpacity>}
                 backgroundColor={COLORS.headerColor}/>
 
                 <View style={styles.topBar}>
@@ -136,7 +163,10 @@ export default class HomeScreen extends React.Component{
                 </View>
 
                 <Animatable.Text duration={1500} animation="bounceInDown"
-                    ref={this.handleViewRef} style={styles.title}>Q{this.state.questionNumber}: {this.state.currentQuestion}</Animatable.Text>
+                    ref={this.handleViewRef} style={[styles.title, this.state.currentQuestion.length > 50
+                        ? {fontSize: 30}
+                        : null
+                    ]}>Q{this.state.questionNumber}: {this.state.currentQuestion}</Animatable.Text>
 
                 <Animatable.View ref={this.otherViewRef}>
                 {
@@ -280,7 +310,11 @@ const styles = StyleSheet.create({
         alignContent: "center",
         justifyContent: "center",
 
-        marginTop: "10%"
+        marginTop: "10%",
+
+        shadowColor: "black",
+        shadowOpacity: 0.3,
+        shadowOffset: {width: 4, height: 4}
     },
 
     submitText: {

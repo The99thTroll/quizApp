@@ -33,6 +33,8 @@ export default class LoadingScreen extends React.Component{
             this.questions = PROBLEMS.moreOperations
         }else if(type === "Advanced Operations"){
             this.questions = PROBLEMS.advancedOperations
+        }else if(type === "Decimals and Fractions"){
+            this.questions = PROBLEMS.decimalsFractions
         }else if(type === "Review #1"){
             this.questions = PROBLEMS.review1
         }

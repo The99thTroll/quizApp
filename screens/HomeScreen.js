@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component{
         }else if(data === "Medium"){
             return(<View style={{backgroundColor: "#e8e810",borderRadius: 10,
             padding: 5, alignSelf: "center", marginTop: "2%"}}>
-                <Text style={{color: "#9c9c00", fontWeight: "bold"}}>
+                <Text style={{color: "#828201", fontWeight: "bold"}}>
                 {data}
                 </Text>
             </View>)
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         alignSelf: "center",
+        textAlign: "center"
     },
 
     quizDescription:{
